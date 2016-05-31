@@ -1,6 +1,5 @@
 <?php
 // modif github
-//encore modif github
 // 2ed0090c1fc0c69706789232c2d0db91eb725281 // githubtoken
 // Autoloader de classes
 require("classes/Autoloader.php");
