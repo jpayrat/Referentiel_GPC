@@ -49,6 +49,25 @@ hr { height: 1px; border: 0; background-color: #d6d6d6; clear: both; width: 100%
 
 .souligner { text-decoration: underline; }
 
+
+.arrow
+{
+  width: 0; height: 0; border-bottom: 11px solid transparent; border-top: 11px solid transparent; border-right: 11px solid #000;
+  position: absolute;
+  bottom: 740px;
+  left: 331px;
+  -webkit-transition:all 0.5s ease-in-out; -moz-transition:all 0.5s ease-in-out; -ms-transition:all 0.5s ease-in-out; -o-transition:all 0.5s ease-in-out; content:"";
+}
+
+.arrowBottom
+{
+  position: absolute;
+  margin: 5px 0 0 0 !important;
+  width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid #000;
+  -webkit-transition:all 0.5s ease-in-out; -moz-transition:all 0.5s ease-in-out; -ms-transition:all 0.5s ease-in-out; -o-transition:all 0.5s ease-in-out; content:"";
+}
+
+
 .corps { width: 1170px; margin: 0 auto; padding: 0; text-align: left; border: 0px solid #000;}
 .container { display: inline-block; width: 75%; margin: 0 auto; padding: 0px 30px 40px 30px; color: #333; border-left: 1px solid #000;}
 
@@ -112,7 +131,7 @@ vertical-align: middle;
 -webkit-transition-property: border-color, box-shadow;
 -webkit-transition-timing-function: ease-in-out, ease-in-out;
 
-transition-delay: 0s, 0s;
+transition-delay: 0, 0;
 transition-duration: 0.15s, 0.15s;
 transition-property: border-color, box-shadow;
 transition-timing-function: ease-in-out, ease-in-out;
@@ -142,7 +161,7 @@ input.incorrect::-moz-placeholder, textarea.incorrect::-moz-placeholder { color:
 .corps .container div.form_session { color: #333; display: block; font-size: 15px; height: 25px; line-height: 21px; text-align: center;}
 .corps .container div.form_session a { display: inline-block; margin: 0 0 0 15px; text-decoration: none; color: rgb(151, 198, 54); }
 
-form button, button.valid { border: 0px solid #a2cd48; border-radius: 2px; color: #333; background-color: #fff; cursor: pointer; display: inline-block; font-family: 'ProximaLight', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 100; height: 36px; line-height: 18px; margin: 0px; padding: 0 13px; text-align: center; transition: color linear 0.1; }
+form button, button.valid { border: 0 solid #a2cd48; border-radius: 2px; color: #333; background-color: #fff; cursor: pointer; display: inline-block; font-family: 'ProximaLight', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 100; height: 36px; line-height: 18px; margin: 0; padding: 0 13px; text-align: center; transition: color linear 0.1; }
 form button:hover, button.valid:hover { color: #ff9700; transition: color linear 0.1s;}
 
 /* Style des messages d'informations */
@@ -160,7 +179,7 @@ form button:hover, button.valid:hover { color: #ff9700; transition: color linear
 /*--------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------- Mise en forme du Pied de page ------------------------------------------*/
 
-div.footer { margin: 8px auto; text-align: center; padding: 3px 0 25px 0; font-size: 0.9em; background-color: #f6f6f6; color: #666; text-align: center; min-height: 38px; line-height: 38px; border: 0px solid #000;}
+div.footer { margin: 8px auto; text-align: center; padding: 3px 0 25px 0; font-size: 0.9em; background-color: #f6f6f6; color: #666; min-height: 38px; line-height: 38px; border: 0 solid #000;}
 
 div.footer_content
 {

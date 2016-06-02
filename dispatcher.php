@@ -1,7 +1,7 @@
 <?php
 // Autoloader de classes
-require("classes/Autoloader.php");
-RefGPC\Autoloader::register();
+require("_systemClass/Autoloader.php");
+RefGPC\_systemClass\Autoloader::register();
 
 // Definition des chemins
 define ('WEBPATH', str_replace('dispatcher.php', '', $_SERVER['SCRIPT_NAME']));
@@ -13,7 +13,7 @@ $dirModels = PATH.'_models/';
 $dirVues = PATH.'_vues/';
 
 // Récupération de la page demandée par l'utilisateur
-$pageAsk = htmlentities($_GET['p']);
+$pageAsk = htmlentities($_GET['url']);
 
 // Opérations sur la session
 

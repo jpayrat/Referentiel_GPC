@@ -6,12 +6,12 @@ function classCSSMenuLateralActif($menu){
     global $classLienMenuLateralCentre;
     global $classLienMenuLateralTech;
 
-    if($menu === 'ilot'){
+    if($menu == 'ilot'){
         $classLienMenuLateralIlot = 'actif';
         $classLienMenuLateralCentre = '';
         $classLienMenuLateralTech = '';
     }
-    elseif($menu === 'centre'){
+    elseif($menu == 'centre'){
         $classLienMenuLateralIlot = '';
         $classLienMenuLateralCentre = 'actif';
         $classLienMenuLateralTech = '';

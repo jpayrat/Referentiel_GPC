@@ -33,7 +33,7 @@ $classCSSLienMP = classCSSLien($ui == 'MP');
 $classCSSLienLR = classCSSLien($ui == 'LR');
 $libelleBase = libelleBase($ui);
 $codeBase = codeBase($ui);
-$titre = 'Îlots GPC - '.$libelleBase;
+$complementTitre = 'Îlots GPC - '.$libelleBase;
 
 // Gestion du menu latéral
 // Principe général : Le menu dans lequel ont est doit être surligné
@@ -44,21 +44,18 @@ classCSSMenuLateralActif('ilot');
 
 
 //Affichage du formulaire
-$form = new \RefGPC\Form();
+$form = new \RefGPC\_models\Form();
 
 $selectIlotList = $form->select('ilotList', $codeBase);
-/*$form->select('typeIlot', $codeBase);
-$form->select('used', $codeBase);
-$form->select('competence', $codeBase);
-$form->select('serviceCible', $codeBase);
-$form->select('entreprise', $codeBase);
-$form->select('siteGeo', $codeBase);
-$form->select('domaineAct', $codeBase);
-*/
+$selectTypeIlot = $form->select('typeIlot', $codeBase);
+$selectUsed = $form->select('used', $codeBase);
+$selectCompetence = $form->select('competence', $codeBase);
+$selectServiceCible = $form->select('serviceCible', $codeBase);
+$selectEntreprise = $form->select('entreprise', $codeBase);
+$selectSiteGeo = $form->select('siteGeo', $codeBase);
+$selectDomaineAct = $form->select('domaineAct', $codeBase);
 
 
-
-echo $ilotList;
 
 
 
