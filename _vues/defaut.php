@@ -1,8 +1,13 @@
 <?php
-require("haut.php");
+    require("haut.php");
 ?>
-    <section class="corps">
-        <div class="container index aff" style="border: 0px solid #000; padding: 0 30px;text-align: center;">
+
+<section class="corps">
+    <div class="lateral_nav">
+        <?php require("menuLateral_V.php"); ?>
+    </div>
+
+        <div class="container">
 
             <h1><?php echo $titre; ?></h1>
 
@@ -13,7 +18,7 @@ require("haut.php");
             <form action="Parties_pros_v0.1/PPros/rechercheGlobal" method="POST">
                 <div class="formSearchGlobal">
                     <button class="rechercheGenPProsSubmit" type="submit" aria-label="Rechercher"></button>
-                    <?php echo $input; ?>
+                    <?php //echo $input; ?>
                     <br /><br />
                     <button class="rechercheRecentSubmit" id="rechercheRecentSubmit" type="submit">Parties récentes</button> - <button class="rechercheHasardSubmit" type="submit">Partie au hasard</button>
                 </div>

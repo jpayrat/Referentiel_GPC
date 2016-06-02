@@ -6,11 +6,10 @@
     <meta name="author" content="PAYRAT Julien" />
     <meta name="description" content="Référentiel GPC" />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" type="text/css" href="<?= $httpPath; ?>css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<?= WEBPATH; ?>css/style.css" />
     <link rel="shortcut icon" href="" />
 
-    <script src="<?= $httpPath; ?>_js/jquery-1.12.1.min.js"></script>
-
+    <script src="<?= WEBPATH; ?>_js/jquery-1.12.1.min.js"></script>
 
     <title>Referentiel-GPC</title>
 </head>
@@ -20,12 +19,12 @@
 <!--<header>-->
 <div class="header">
     <div class="header_entete">
-        <img src="<?= $httpPath; ?>_img/_design/logo_orange.gif" class="logoOrange" alt="logo orange" />
-        <div class="titre"><a href="<?= $httpPath; ?>index.php">Référentiel GPC</a></div>
+        <img src="<?= WEBPATH; ?>img/_design/logo_orange.gif" class="logoOrange" alt="logo orange" />
+        <div class="titre"><a href="<?= WEBPATH; ?>">Référentiel GPC</a></div>
 
         <div class="nav">
-            <div><a href="<?= $httpPath; ?>index.php" class="<?= $classCSSLienMP; ?>"><!--<img src="_img/logo_MP.jpg" alt="logo_MP"/>-->Midi-Pyrénées</a></div>
-            <div class="separateur"><a href="<?= $httpPath; ?>index.php?ui=2" class="<?= $classCSSLienLR; ?>"><!--<img src="_img/logo_LR.jpg" alt="logo_LR"/>-->Languedoc Roussillon</a></div>
+            <div><a href="<?= $lienHorizMP; ?>" class="<?= $classCSSLienMP; ?>">Midi-Pyrénées</a></div>
+            <div class="separateur"><a href="<?= $lienHorizLR; ?>" class="<?= $classCSSLienLR; ?>">Languedoc Roussillon</a></div>
             <div></div>
         </div>
     </div>

@@ -36,4 +36,11 @@ class Database{
 
     }
 
+    public function queryAll($statement){
+        $req = $this->getPDO()->query($statement);
+        $res = $req->fetchAll();
+        return $res;
+
+    }
+
 }
