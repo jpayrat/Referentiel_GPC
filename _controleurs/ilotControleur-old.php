@@ -9,7 +9,8 @@
 //      -> Eventuellement un historique des modifications
 
 use \RefGPC\_models\Form;
-use \RefGPC\_systemClass\RefGPC;
+use \RefGPC\_systemClass\RefGPC; // RefGPC::getDB()
+use \RefGPC\_models\ChoixBase;
 
 //Gestion des css et js necessaire
 
@@ -24,33 +25,35 @@ $lienHorizLR = WEBPATH.'LR/ilot';
 $lienHorizMP = WEBPATH.'MP/ilot';
 
 // Gestion du choix de la base LR / MP
-require($dirModels.'chxBaseLrMp_M.php');
-$classCSSLienMP = classCSSLien($ui == 'MP');
-$classCSSLienLR = classCSSLien($ui == 'LR');
-$libelleBase = libelleBase($ui);
-$codeBase = codeBase($ui);
+//require($dirModels.'chxBaseLrMp_M.php'); // utilisation d'une classe
+
+$base = new ChoixBase($ui);
+
+$classCSSLienMP = $base->classCSSLien('MP');
+$classCSSLienLR = $base->classCSSLien('LR');
+$libelleBase = $base->libelle();
+ 
+
 
 
 // Gestion du menu latéral
 // Principe général : Le menu dans lequel ont est doit être surligné
-require($dirModels.'menuLateral_M.php');
-classCSSMenuLateralActif('ilot');
-
-
+//require($dirModels.'menuLateral_M.php');
+//classCSSMenuLateralActif('ilot');
+$classCSSMenu = new \RefGPC\_models\ModelVueDefaut('ilot');
 
 
 //Affichage du formulaire
 $form = new Form();
 
-$selectIlotList = $form->select('ilotList', $codeBase);
-$selectTypeIlot = $form->select('typeIlot', $codeBase);
-$selectUsed = $form->select('used', $codeBase);
-$selectCompetence = $form->select('competence', $codeBase);
-$selectServiceCible = $form->select('serviceCible', $codeBase);
-$selectEntreprise = $form->select('entreprise', $codeBase);
-$selectSiteGeo = $form->select('siteGeo', $codeBase);
-$selectDomaineAct = $form->select('domaineAct', $codeBase);
-
+$selectIlotList = $form->select('ilotList', $base->code());
+$selectTypeIlot = $form->select('typeIlot', $base->code());
+$selectUsed = $form->select('used', $base->code());
+$selectCompetence = $form->select('competence', $base->code());
+$selectServiceCible = $form->select('serviceCible', $base->code());
+$selectEntreprise = $form->select('entreprise', $base->code());
+$selectSiteGeo = $form->select('siteGeo', $base->code());
+$selectDomaineAct = $form->select('domaineAct', $base->code());
 
 
 $nbIlot = RefGPC::getDB()->queryCount('SELECT iloCodeIlot FROM `tm_ilots`');

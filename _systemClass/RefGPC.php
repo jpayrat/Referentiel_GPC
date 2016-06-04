@@ -16,6 +16,7 @@ class RefGPC
     const DB_USER = 'root';
     const DB_PASS = '';
     const DB_HOST = 'localhost';   
+    
     private static $database;
 
     public static function getDB(){
