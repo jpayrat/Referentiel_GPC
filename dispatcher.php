@@ -61,8 +61,10 @@ switch ($pageAsk)
     break;
 
     case "ilotResForm";
-        echo 'plop'; require($dirControleurs."rechercheFormePPros_C.php");
+        echo 'plop'; 
+        require($dirControleurs."rechercheFormePPros_C.php");
     break;
 
-    default : require($dirControleurs."ilotControleur-old.php"); // Page index par defaut
+    default : 
+        require($dirControleurs."ilotControleur-old.php"); // Page index par defaut
 }

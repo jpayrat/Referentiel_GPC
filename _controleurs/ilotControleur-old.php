@@ -53,18 +53,7 @@ $selectDomaineAct = $form->select('domaineAct', $codeBase);
 
 
 
-
-
-
-
-
-
-
-
-
 $nbIlot = RefGPC::getDB()->queryCount('SELECT iloCodeIlot FROM `tm_ilots`');
-
-
 
 
 //$input = createInput('rechercheGenPPros', 'text', 'rechercheGenPpros', 'Date, joueur, évenement etc...');
