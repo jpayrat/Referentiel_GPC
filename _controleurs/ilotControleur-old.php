@@ -8,18 +8,14 @@
 //      -> Les boutons "Tout lister" et "Réinit Formulaire"
 //      -> Eventuellement un historique des modifications
 
+use \RefGPC\_models\Form;
+use \RefGPC\_systemClass\RefGPC;
+
 //Gestion des css et js necessaire
 
 
 // Test pour savoir si on est sur la base LR ou la base MP
-if(isset($_GET['ui'])) {
-    $getUI = htmlentities($_GET['ui']);
-    if($getUI == 'LR'){ $ui = 'LR'; }
-    else { $ui = 'MP'; }
-}
-else {
-    $ui = 'MP'; // ui par défaut
-}
+
 
 // Permet de définir les urls des liens du menu horizontal Midi-Pyrénées et Languedoc-Roussillon
 // Principe de fonctionnement général : Si on est dans ilot, le changement de zone se fait en restant sur ilot,
@@ -33,7 +29,7 @@ $classCSSLienMP = classCSSLien($ui == 'MP');
 $classCSSLienLR = classCSSLien($ui == 'LR');
 $libelleBase = libelleBase($ui);
 $codeBase = codeBase($ui);
-$complementTitre = 'Îlots GPC - '.$libelleBase;
+
 
 // Gestion du menu latéral
 // Principe général : Le menu dans lequel ont est doit être surligné
@@ -44,7 +40,7 @@ classCSSMenuLateralActif('ilot');
 
 
 //Affichage du formulaire
-$form = new \RefGPC\_models\Form();
+$form = new Form();
 
 $selectIlotList = $form->select('ilotList', $codeBase);
 $selectTypeIlot = $form->select('typeIlot', $codeBase);
@@ -66,7 +62,7 @@ $selectDomaineAct = $form->select('domaineAct', $codeBase);
 
 
 
-$nbIlot = RefGPC\RefGPC::getDB()->queryCount('SELECT iloCodeIlot FROM `tm_ilots`');
+$nbIlot = RefGPC::getDB()->queryCount('SELECT iloCodeIlot FROM `tm_ilots`');
 
 
 

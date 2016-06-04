@@ -1,6 +1,6 @@
 <?php
 
-namespace RefGPC;
+namespace RefGPC\_systemClass;
 
 use \PDO;
 class Database{

@@ -4,15 +4,20 @@ namespace RefGPC\_systemClass;
 
 class Autoloader{
 
+
+    const RACINE_NAMESPACE = 'RefGPC';
+
     static function register(){
-        spl_autoload_register(array(__CLASS__, 'autoload'));
+       spl_autoload_register(array(__CLASS__, 'autoload'));
     }
 
     static function autoload($className){
-        if(strpos($className, __NAMESPACE__.'\\') === 0){
-            $className = str_replace(__NAMESPACE__.'\\', '', $className);
+        if(strpos($className, self::RACINE_NAMESPACE.'\\') === 0){
+
+            $className = str_replace(self::RACINE_NAMESPACE.'\\', '', $className);
             $className = str_replace('\\', '/', $className);
-            require __DIR__.'/'.$className.'.php';
+            echo PATH.$className.'.php';
+            require PATH.$className.'.php';
         }
     }
 }

@@ -10,7 +10,7 @@
         <div class="container">
 
             <form method="post" id="form_ilot" action="#" class="formulaire">
-                <h1> Îlots GPC <?php echo '- '.$complementTitre; ?></h1>
+                <h1> Îlots GPC <?php echo '- '.$libelleBase; ?></h1>
                 <hr />
 
                 <label for="rechercheGlobal" class="gen souligner">Recherche globale</label><input type="text" name="rechercheGlobal" id="rechercheGlobal" tabindex="1" size="30" maxlength="28" />

@@ -1,6 +1,7 @@
 <?php
 
-namespace RefGPC;
+namespace RefGPC\_systemClass;
+
 
 
 class RefGPC

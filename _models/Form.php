@@ -1,6 +1,6 @@
 <?php
 namespace RefGPC\_models;
-
+use \RefGPC\_systemClass\RefGPC;
 
 class Form
 {
