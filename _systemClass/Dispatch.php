@@ -23,8 +23,8 @@ class Dispatch {
 			//$name = '/RefGPC/_controleurs/'.$name;
 			echo '<br />Classe appele : ['.$name.']';
 
-            return new $name();
-
+            /// Ne comprend pas pourquoi cette syntaxe ne fonctionne pas !!!!! // return new $name();
+            return new ilotControleur();
 		}
 		else {
 			return null;

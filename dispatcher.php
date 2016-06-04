@@ -54,8 +54,8 @@ if (null == $controller) {
     echo '<br />erreur 404 <br> Controller inexistant ['.$controllerName.']<br> ';
 }
 else {
-    if (method_exists($controller, $actionName)) {
-        $controller->$actionName();	// tutoriel -> index()
+    if (method_exists($controller, $methodName)) {
+        $controller->$methodName($ui);	// tutoriel -> index()
     }
     else {
         echo 'erreur 404<br>Methode inexistante ['.$actionName.']<br> ';
