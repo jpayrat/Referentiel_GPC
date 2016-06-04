@@ -16,7 +16,7 @@ class Autoloader{
 
             $className = str_replace(self::RACINE_NAMESPACE.'\\', '', $className);
             $className = str_replace('\\', '/', $className);
-            echo PATH.$className.'.php';
+            echo '<br />'.PATH.$className.'.php';
             require PATH.$className.'.php';
         }
     }
