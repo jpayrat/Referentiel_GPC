@@ -5,16 +5,9 @@ class ilotControleur
 {
 
     public function index() {
-        echo 'index '.'<br/>';
-        $mo = new model();
-        $d = array();
-        $d['tuto'] = array(
-            'titre' => 'Salut',
-            'description' => 'Exemple de description',
-        );
+        echo '<br /><br /> ceci est le controlleur qui va appeler les méthodes pour index îlot '.'<br/>';
 
-        var_dump($d);
-        echo 'plop';
+
         //$this->render('index');
     }
 

@@ -2,9 +2,11 @@
 use \RefGPC\_systemClass\Autoloader;
 use \RefGPC\_systemClass\Dispatch;
 
+//phpinfo();
+
 // Autoloader de classes
 require("_systemClass/Autoloader.php");
-Autoloader::register(); // On pourrait enlever \RefGPC\_systemClass\ si on met un [use \RefGPC\_systemClass\Autoloader;] en début de fichier
+Autoloader::register();
 
 // Definition des chemins
 define ('WEBPATH', str_replace('dispatcher.php', '', $_SERVER['SCRIPT_NAME']));
@@ -45,16 +47,26 @@ $pageAsk = explode('/', $pageAsk); // séparation des éléments de l'url
     Dispatch::addController('centreControleur');
 
 
-//$controller = Dispatch::createController($controllerName);
 
 
-
+$controller = Dispatch::createController($controllerName);
+if (null == $controller) {
+    echo '<br />erreur 404 <br> Controller inexistant ['.$controllerName.']<br> ';
+}
+else {
+    if (method_exists($controller, $actionName)) {
+        $controller->$actionName();	// tutoriel -> index()
+    }
+    else {
+        echo 'erreur 404<br>Methode inexistante ['.$actionName.']<br> ';
+    }
+}
 // Opérations sur la session
 
 
 
 // Appels des controleurs
-switch ($pageAsk)
+/*switch ($pageAsk)
 {
     case "ilotAffForm";
         require($dirControleurs."ilotControleur-old.php");
@@ -64,5 +76,5 @@ switch ($pageAsk)
         echo 'plop'; require($dirControleurs."rechercheFormePPros_C.php");
     break;
 
-    default : require($dirControleurs."ilotControleur-old.php"); // Page index par defaut
-}
+    default : require($dirControleurs."ilotControleur.php"); // Page index par defaut
+}*/

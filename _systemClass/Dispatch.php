@@ -20,9 +20,11 @@ class Dispatch {
 		if (self::controllerExists($name)) {
 			//$name = '\controllers\tutoriels';
 			//echo 'plop'.$name.'plop';
-			$name = 'RefGPC/_controleurs/'.$name;
-			echo '<br />Classe appele : '.$name;
-			return new $name();
+			//$name = '/RefGPC/_controleurs/'.$name;
+			echo '<br />Classe appele : ['.$name.']';
+
+            return new $name();
+
 		}
 		else {
 			return null;
