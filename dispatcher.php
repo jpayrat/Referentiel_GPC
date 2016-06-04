@@ -31,7 +31,8 @@ $pageAsk = explode('/', $pageAsk); // séparation des éléments de l'url
     echo '<br /> Ui sélectionnée : '.$ui;
 
     // Calcul du controleur
-    $controllerName = $pageAsk[1].'Controleur';
+    //$controllerName = $pageAsk[1].'Controleur';
+    $controllerName = isset($pageAsk[1]) ? $pageAsk[1].'Controleur' : 'iloControleur'; // En attendant d'avoir une page d'accueil ...
     echo '<br /> Controleur sélectionné : '.$controllerName;
 
     // Calcul de la method du controleur à utiliser
@@ -63,5 +64,5 @@ switch ($pageAsk)
         echo 'plop'; require($dirControleurs."rechercheFormePPros_C.php");
     break;
 
-    default : require($dirControleurs."ilotControleur.php"); // Page index par defaut
+    default : require($dirControleurs."ilotControleur-old.php"); // Page index par defaut
 }
