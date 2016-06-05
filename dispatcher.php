@@ -16,9 +16,14 @@ $dirModels = PATH.'_models/';
 $dirVues = PATH.'_vues/';
 
 // Récupération de la page demandée par l'utilisateur
+$myDispacher = new Dispatch($_GET['url']);
+
+die("myDispacher");
 // Format de l'URL : referentielGPC.com/BaseLR-MP/Controleur/methode
 $pageAsk = htmlentities($_GET['url']); // Récup sécurisé de l'url
 $pageAsk = explode('/', $pageAsk); // séparation des éléments de l'url
+
+
 
     // Calcul de la base choisie LR ou MP
     if(preg_match('#[A-Z]{2}#', $pageAsk[0])) {
@@ -32,23 +37,23 @@ $pageAsk = explode('/', $pageAsk); // séparation des éléments de l'url
 
     // Calcul du controleur
     //$controllerName = $pageAsk[1].'Controleur';
-    $controllerName = isset($pageAsk[1]) ? $pageAsk[1].'Controleur' : 'iloControleur'; // En attendant d'avoir une page d'accueil ...
+    $controllerName = isset($pageAsk[1]) ? $pageAsk[1].'Controleur' : 'ilotControleur'; // En attendant d'avoir une page d'accueil ...
     echo '<br /> Controleur sélectionné : '.$controllerName;
 
     // Calcul de la method du controleur à utiliser
     $methodName = isset($pageAsk[2]) ? $pageAsk[2] : 'affIndex';
     echo '<br /> Méthode sélectionnée : '.$methodName;
     echo '<br />';
-
+/*
     //Lister tout les controleur existant;
     Dispatch::addController('ilotControleur');
     Dispatch::addController('centreControleur');
 
 
-//$controller = Dispatch::createController($controllerName);
+$controller = Dispatch::createController($controllerName);
+echo '<br /> creation controleur: ['.$controller. ']';
 
-
-
+*/
 // Opérations sur la session
 
 

@@ -12,12 +12,12 @@ class Autoloader{
     }
 
     static function autoload($className){
-        //echo '<br> Autoloader :: ['.$className.']';
+        echo '<br> Autoloader :: ['.$className.']';
         if(strpos($className, self::RACINE_NAMESPACE.'\\') === 0){
 
             $className = str_replace(self::RACINE_NAMESPACE.'\\', '', $className);
             $className = str_replace('\\', '/', $className);
-            echo '<br />'.PATH.$className.'.php';
+            echo '<br />Autoload::'.$className.' : ['.PATH.$className.'.php]';
             require PATH.$className.'.php';
         }
         else {
