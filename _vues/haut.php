@@ -7,6 +7,7 @@
     <meta name="description" content="Référentiel GPC" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" type="text/css" href="<?= WEBPATH; ?>css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<?= WEBPATH; ?>css/ilot.css" />
     <link rel="shortcut icon" href="" />
 
     <script src="<?= WEBPATH; ?>_js/jquery-1.12.1.min.js"></script>

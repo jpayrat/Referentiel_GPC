@@ -2,7 +2,7 @@
 
 namespace RefGPC\_systemClass;
 
-use \RefGPC\_controleurs\ilotControleur;
+//use \RefGPC\_controleurs\ilotControleur;
 
 class Dispatch {
 
@@ -19,29 +19,61 @@ class Dispatch {
      * 2 : methode
      * 3+ : autres parametres
      */
-    public $paramsUrl;
+    protected $paramsUrl;
 
     public function __construct($url) {
         $this->initControleurs();
         // traite les données de l'url
         $this->paramsUrl = $this->traiteURL($url);
-        //var_dump($this->paramsUrl);
+        
+        
+        
     }
+    // helpers
+    public function baseName() { return $this->paramsUrl[0]; }
+    public function controllerName() { return $this->paramsUrl[1]; }
+    public function methodName() { return $this->paramsUrl[2]; }
+    
     
     public function createController() {
-        $name = 'RefGPC/_controleurs/' . $this->paramsUrl[1];
-        echo '<br />createController :: Classe appele : ' . $name;
+        $name = '\\RefGPC\\_controleurs\\' . $this->controllerName();
+        //echo '<br />Dispatch::createController : Classe appele : [' . $name.']';
         // \RefGPC\_controleurs
         return new $name();
     }
 
+    /**
+     * Cree le controleur et execute la methode.
+     * @throws RefGpcException
+     */
+    public function exec() {
+        //var_dump($this->paramsUrl);
+        $controller = $this->createController();
+        if (method_exists($controller, $this->methodName())) {
+            $data = $this->paramsUrl;
+            unset($data[1]);
+            unset($data[2]);
+            call_user_func_array(array($controller, $this->methodName()), $data);
+        }
+        else {
+            // TODO: crer le controller des erreur et renvoyer sur erreur 404
+            echo '<br /> ERREUR 404';
+            var_dump($this->paramsUrl);
+            throw new RefGpcException('Dispatch::exec() : methode ['.$this->methodName().'] inexistante !');
+        }
+    }
+    
     /**
      * initialise les controlleurs connus de Dispatch
      * Evite de faire l'appel à addController() dans la page d'accueil dispatcher.php
      */
     private function initControleurs() {
         //Lister tout les controleur existant;
-        $initControllers = array('ilotControleur', 'centreControleur');
+        $initControllers = array(
+            'baseControleur',
+            'centreControleur',
+            'ilotControleur'
+            );
         array_merge($this->knownControllers, $initControllers);
     }
 
@@ -49,43 +81,15 @@ class Dispatch {
      * Ajoute un controleur à la liste des controlleurs connus
      * @param type $name String nom du nouveau controleur
      */
-    public function addController($name) {
-        $this->knownControllers[] = $name;
-    }
-/*
-    public function createController($name) {
-        // verifie l'existence du controller
-        if ($this->controllerExists($name)) {
-            //$name = '\controllers\tutoriels';
-            //echo 'plop'.$name.'plop';
-            $name = 'RefGPC/_controleurs/' . $name;
-            echo '<br />Classe appele : ' . $name;
-            return new $name();
-        } else {
-            $this->listeController();
-            $msg = 'Dispatch :: Controleur [' . $name . '] inconnu de Dispatch.';
-            throw new RefGpcException($msg);
-            return null;
-        }
-    }
-*/
-    private function controllerExists($name) {
-        return in_array($name, $this->knownControllers);
-    }
-
-    // utile pour debug : var_dump
-    private function listeController() {
-        echo '<br>listeController :';
-        foreach ($this->knownControllers as $c) {
-            echo '<br>controller [' . $c . ']';
-        }
-    }
-
+    public function addController($name) { $this->knownControllers[] = $name; }
+    
+    private function controllerExists($name) { return in_array($name, $this->knownControllers); }
     // ---------------------------------------------------------------
     /**
-     * traitement de l'url.
+     * traitement de l'url et déterminer le controler, la methode et les paremetres.
      * Format de l'URL : referentielGPC.com/BaseLR-MP/Controleur/methode
      * @param type $url
+     * @return type array() : le nom du controleur, la methode et les params 
      */
     protected function traiteURL($url) {
         //$pageAsk = htmlentities($_GET['url']); // Récup sécurisé de l'url
@@ -112,12 +116,7 @@ class Dispatch {
         if (!$this->controllerExists($pageAsk[1])) { $pageAsk[1] = self::DEFCONTROLLERNAME; }
         
         // Calcul de la method du controleur à utiliser
-        $pageAsk[2] = isset($pageAsk[2]) ? $pageAsk[2] : self::DEFACTIONNAME;
-        if (!method_exists($pageAsk[1], $pageAsk[2])) { 
-            $pageAsk[1] = self::DEFCONTROLLERNAME; 
-            $pageAsk[2] = self::DEFACTIONNAME;
-        }
-        
+        $pageAsk[2] = isset($pageAsk[2]) ? $pageAsk[2] : self::DEFACTIONNAME;       
         return $pageAsk;
       
     }
