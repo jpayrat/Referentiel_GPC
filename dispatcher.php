@@ -2,6 +2,8 @@
 use \RefGPC\_systemClass\Autoloader;
 use \RefGPC\_systemClass\Dispatch;
 
+//require 'F:/Programmes/wamp/www/Referentiel_GPC/_controleurs/baseControleur.php';
+
 // Autoloader de classes
 require("_systemClass/Autoloader.php");
 Autoloader::register(); // On pourrait enlever \RefGPC\_systemClass\ si on met un [use \RefGPC\_systemClass\Autoloader;] en début de fichier
@@ -17,7 +19,8 @@ $dirVues = PATH.'_vues/';
 
 // Récupération de la page demandée par l'utilisateur
 $myDispacher = new Dispatch($_GET['url']);
-
+$myDispacher->exec();
+/*
 die("myDispacher");
 // Format de l'URL : referentielGPC.com/BaseLR-MP/Controleur/methode
 $pageAsk = htmlentities($_GET['url']); // Récup sécurisé de l'url
@@ -55,7 +58,7 @@ echo '<br /> creation controleur: ['.$controller. ']';
 
 */
 // Opérations sur la session
-
+/*
 
 
 // Appels des controleurs
@@ -72,4 +75,4 @@ switch ($pageAsk)
 
     default : 
         require($dirControleurs."ilotControleur-old.php"); // Page index par defaut
-}
+}*/

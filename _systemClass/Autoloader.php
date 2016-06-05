@@ -12,16 +12,16 @@ class Autoloader{
     }
 
     static function autoload($className){
-        echo '<br> Autoloader :: ['.$className.']';
+        //echo '<br />Autoloader::autoload : ['.$className.']';
         if(strpos($className, self::RACINE_NAMESPACE.'\\') === 0){
 
             $className = str_replace(self::RACINE_NAMESPACE.'\\', '', $className);
             $className = str_replace('\\', '/', $className);
-            echo '<br />Autoload::'.$className.' : ['.PATH.$className.'.php]';
+          // echo '<br />Autoloader:: autoload : '.$className.' : ['.PATH.$className.'.php]';
             require PATH.$className.'.php';
         }
         else {
-           $msg =  '<br> Autoloader :: impossible de charger ['.$className.']'; 
+           $msg =  '<br />Autoloader::autoload : impossible de charger ['.$className.']'; 
            throw new RefGpcException($msg);
         }
     }

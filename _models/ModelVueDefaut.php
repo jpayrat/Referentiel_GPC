@@ -32,4 +32,12 @@ class ModelVueDefaut {
     function cssCentre() { return $this->cssClass['centre']; }    
     function cssTech() { return $this->cssClass['tech']; }
     
+    public function getData() {
+        $d = array();
+        $d['classLienMenuLateralIlot'] = $this->cssIlot();
+        $d['classLienMenuLateralCentre'] = $this->cssCentre();
+        $d['classLienMenuLateralTech'] = $this->cssTech();
+        return $d;
+    }
+    
 }
