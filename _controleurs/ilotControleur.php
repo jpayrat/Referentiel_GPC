@@ -5,7 +5,7 @@ namespace RefGPC\_controleurs;
 use RefGPC\_models\ChoixBase;
 use \RefGPC\_models\Form;
 use \RefGPC\_models\ModelVueDefaut;
-
+use RefGPC\_controleurs\baseControleur;
 use \RefGPC\_systemClass\RefGPC; // RefGPC::getDB()
 
 /**
